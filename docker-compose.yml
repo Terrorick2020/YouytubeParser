@@ -1,0 +1,26 @@
+services:    
+  server:
+    build: ./server
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+    networks:
+      - planner_network
+    ports:
+      - "8000:8000"
+
+  proxy:
+    build: ./nginx
+    depends_on:
+      - server
+    networks:
+      - planner_network
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    command: ["/bin/bash", "-c", "nginx -g 'daemon off;'"] 
+
+networks:
+  planner_network:
+    driver: bridge
