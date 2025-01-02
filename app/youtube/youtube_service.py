@@ -1,26 +1,17 @@
 from fastapi import HTTPException
 from googleapiclient.discovery import build
-from dotenv import load_dotenv
 
 from .fields.channel import *
 from .fields.videos import *
+from config.main_config import YOUTUBE_API_KEY
 
-import os
-
-
-load_dotenv()
-
-API_KEY = os.getenv('API_KEY')
-
-if not API_KEY:
-    raise Exception( 'Environment variable values are missing!' )
 
 async def parse_youtube(parser_config):
 
     channel_name = parser_config.channelName.strip().replace('@', '')
     video_count = parser_config.videoCount
 
-    youtube = build( 'youtube', 'v3', developerKey=API_KEY )
+    youtube = build( 'youtube', 'v3', developerKey=YOUTUBE_API_KEY )
 
     if not youtube:
         raise HTTPException(
