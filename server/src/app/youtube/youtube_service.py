@@ -3,11 +3,12 @@ from googleapiclient.discovery import build
 
 from .fields.channel import *
 from .fields.videos import *
+from .utils.parser_utils import YoutubeParserConfig
 
 from config.main_config import YOUTUBE_API_KEY
 
 
-async def parse_youtube(parser_config):
+async def parse_youtube( parser_config: YoutubeParserConfig ):
 
     channel_name = parser_config.channelName.strip().replace('@', '')
     video_count = parser_config.videoCount

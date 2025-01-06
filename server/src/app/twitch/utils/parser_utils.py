@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
 
-class YoutubeParserConfig( BaseModel ):
+class TwitchParserConfig( BaseModel ):
     channelName: str
     videoCount: int
