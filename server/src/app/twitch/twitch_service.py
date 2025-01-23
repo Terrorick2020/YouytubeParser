@@ -10,7 +10,7 @@ from .utils.parser_utils import TwitchParserConfig
 
 
 async def home():
-    redirect_url = "/login"
+    redirect_url = "/twitch/login"
 
     return HTMLResponse(f'''
         <html lang="ru">
@@ -49,7 +49,7 @@ async def callback(code: str):
         raise HTTPException(status_code=400, detail="Unable to get access token")
 
     # Перенаправляем на страницу с данными пользователя
-    return RedirectResponse(url=f"/parse-result?access_token={access_token}")
+    return RedirectResponse(url=f"/twitch/parse-result?access_token={access_token}")
 
 async def parse_twitch( access_token: str ):
     headers = {

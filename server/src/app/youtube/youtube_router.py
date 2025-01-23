@@ -7,7 +7,7 @@ from . import youtube_service
 youtube_router = APIRouter()
 
 @youtube_router.post(
-    '/youtube',
+    '/parse',
     tags = ['YouTube ▶️'],
     summary = 'Получить информацию канала!',
     status_code = 200,

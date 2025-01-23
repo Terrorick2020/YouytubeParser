@@ -11,10 +11,10 @@ from app.youtube.youtube_router import youtube_router
 
 app = FastAPI()
 
-app.include_router( hello_router )
-app.include_router( instagram_router )
-app.include_router( twitch_router )
-app.include_router( youtube_router )
+app.include_router( hello_router, prefix="/hello" )
+app.include_router( instagram_router, prefix="/instagram" )
+app.include_router( twitch_router, prefix="/twitch" )
+app.include_router( youtube_router, prefix="/youtube" )
 
 if __name__ == '__main__':
     try:
